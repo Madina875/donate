@@ -1,11 +1,12 @@
 import { Column, DataType, Model, Table } from "sequelize-typescript"; //
 
-interface ICategoriesCreateAttr {
+interface ICuryerCreateAttr {
   name: string;
+  social_icon: string;
 }
 
-@Table({ tableName: "categories", timestamps: true }) //
-export class Categories extends Model<Categories, ICategoriesCreateAttr> {
+@Table({ tableName: "social", timestamps: true }) //
+export class Social extends Model<Social, ICuryerCreateAttr> {
   @Column({
     type: DataType.INTEGER,
     autoIncrement: true,
@@ -16,7 +17,11 @@ export class Categories extends Model<Categories, ICategoriesCreateAttr> {
   @Column({
     type: DataType.STRING(100),
     allowNull: false,
-    unique: true,
   })
   declare name: string;
+
+  @Column({
+    type: DataType.STRING(200),
+  })
+  declare social_icon: string;
 }

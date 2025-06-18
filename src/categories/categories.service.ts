@@ -11,7 +11,7 @@ export class CategoriesService {
   ) {}
 
   createCategories(createCategoriesDto: CreateCategoriesDto) {
-    return this.categoriesModel.create();
+    return this.categoriesModel.create(createCategoriesDto);
   }
 
   async getAllCategories(): Promise<Categories[]> {

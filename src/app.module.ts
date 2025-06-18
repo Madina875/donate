@@ -7,6 +7,8 @@ import { CuryerModule } from "./curyer/curyer.module";
 import { Curyer } from "./curyer/models/curyer.model";
 import { CategoriesModule } from "./categories/categories.module";
 import { Categories } from "./categories/models/categories.model";
+import { Social } from "./social/models/social.model";
+import { SocialModule } from "./social/social.module";
 
 @Module({
   imports: [
@@ -21,7 +23,7 @@ import { Categories } from "./categories/models/categories.model";
       username: process.env.PG_USER,
       password: process.env.PG_PASSWORD,
       database: process.env.PG_DB,
-      models: [Admin, Curyer, Categories],
+      models: [Admin, Curyer, Categories, Social],
       autoLoadModels: true,
       logging: true,
       sync: { alter: false },
@@ -29,6 +31,7 @@ import { Categories } from "./categories/models/categories.model";
     AdminModule,
     CuryerModule,
     CategoriesModule,
+    SocialModule,
   ],
 
   controllers: [],
@@ -41,4 +44,4 @@ If you add a new column to your model, Sequelize will automatically add it to th
 Your database schema stays in sync with your code
 No manual SQL commands needed
 
-*/ 
+*/

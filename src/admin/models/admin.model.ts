@@ -1,6 +1,12 @@
 import { Column, DataType, Model, Table } from "sequelize-typescript"; //
 
-interface IAdminCreateAttr {}
+interface IAdminCreateAttr {
+  full_name: string;
+  phone_number: string;
+  email: string;
+  password_hash: string;
+  address: string;
+}
 
 @Table({ tableName: "admin", timestamps: true }) //
 export class Admin extends Model<Admin, IAdminCreateAttr> {

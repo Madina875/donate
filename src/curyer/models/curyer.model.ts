@@ -1,6 +1,13 @@
 import { Column, DataType, Model, Table } from "sequelize-typescript"; //
 
-interface ICuryerCreateAttr {}
+interface ICuryerCreateAttr {
+  full_name: string;
+  phone_number: string;
+  email: string;
+  password_hash: string;
+  address: string;
+  vehicle_type: "motorcycle" | "bicycle" | "car" | "van";
+}
 
 @Table({ tableName: "curyer", timestamps: true }) //
 export class Curyer extends Model<Curyer, ICuryerCreateAttr> {

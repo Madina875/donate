@@ -40,7 +40,7 @@ export class CategoriesController {
 
   @Patch(":id")
   async updateCategoriesById(
-    @Param(":id") id: number,
+    @Param("id") id: number,
     @Body() updateCategoriesDto: UpdateCategoriesDto
   ) {
     return this.categoriesService.updateCategoriesById(id, updateCategoriesDto);

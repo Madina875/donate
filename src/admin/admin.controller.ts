@@ -38,7 +38,7 @@ export class AdminController {
 
   @Patch(":id")
   async updateAdminById(
-    @Param(":id") id: number,
+    @Param("id") id: number,
     @Body() updateAdminDto: UpdateAdminDto
   ) {
     return this.adminService.updateAdminById(id, updateAdminDto);
