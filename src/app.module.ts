@@ -9,6 +9,12 @@ import { CategoriesModule } from "./categories/categories.module";
 import { Categories } from "./categories/models/categories.model";
 import { Social } from "./social/models/social.model";
 import { SocialModule } from "./social/social.module";
+import { UserModule } from "./user/user.module";
+import { DonationsModule } from "./donations/donations.module";
+import { NotificationsModule } from "./notifications/notifications.module";
+import { User } from "./user/models/user.model";
+import { Notification } from "./notifications/models/notification.model";
+import { Donation } from "./donations/models/donation.model";
 
 @Module({
   imports: [
@@ -23,7 +29,7 @@ import { SocialModule } from "./social/social.module";
       username: process.env.PG_USER,
       password: process.env.PG_PASSWORD,
       database: process.env.PG_DB,
-      models: [Admin, Curyer, Categories, Social],
+      models: [Admin, Curyer, Categories, Social, User, Notification, Donation],
       autoLoadModels: true,
       logging: true,
       sync: { alter: false },
@@ -32,6 +38,9 @@ import { SocialModule } from "./social/social.module";
     CuryerModule,
     CategoriesModule,
     SocialModule,
+    UserModule,
+    DonationsModule,
+    NotificationsModule,
   ],
 
   controllers: [],
