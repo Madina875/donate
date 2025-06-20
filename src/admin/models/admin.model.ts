@@ -14,6 +14,7 @@ interface IAdminCreateAttr {
   email: string;
   password_hash: string;
   address: string;
+  is_active: boolean;
 }
 
 @Table({ tableName: "admin", timestamps: true }) //
@@ -50,6 +51,11 @@ export class Admin extends Model<Admin, IAdminCreateAttr> {
     type: DataType.STRING(100),
   })
   declare address: string;
+
+  @Column({
+    type: DataType.BOOLEAN,
+  })
+  declare is_active: boolean;
 
   @BelongsToMany(() => Role, () => AdminRole)
   declare role: Role[];

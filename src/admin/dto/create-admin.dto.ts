@@ -5,4 +5,5 @@ export class CreateAdminDto {
   password_hash: string;
   address: string;
   value: string;
+  is_active: boolean;
 }

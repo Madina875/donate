@@ -4,6 +4,7 @@ import { InjectModel } from "@nestjs/sequelize";
 import { CreateAdminDto } from "./dto/create-admin.dto";
 import { UpdateAdminDto } from "./dto/update-admin.dto";
 import { RolesService } from "../roles/roles.service";
+import { Role } from "../roles/entities/role.entity";
 
 @Injectable()
 export class AdminService {
@@ -31,6 +32,18 @@ export class AdminService {
 
   async getAdminById(id: number): Promise<Admin | null> {
     return this.adminModel.findByPk(id);
+  }
+
+  async getAdminBYEmail(email: string) {
+    const admin = await this.adminModel.findOne({
+      where: { email },
+      include: {
+        model: Role,
+        attributes: ["id", "value"],
+        through: { attributes: [] },
+      },
+    });
+    return admin?.dataValues;
   }
 
   async removeadminById(id: number): Promise<string> {

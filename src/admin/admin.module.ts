@@ -9,5 +9,6 @@ import { RolesModule } from "../roles/roles.module";
   imports: [SequelizeModule.forFeature([Admin]), RolesModule],
   controllers: [AdminController],
   providers: [AdminService],
+  exports: [AdminService],
 })
 export class AdminModule {}

@@ -12,7 +12,7 @@ export class RolesService {
   }
 
   findAll() {
-    return `This action returns all roles`;
+    return this.roleModel.findAll({ include: { all: true } });
   }
 
   findOne(id: number) {
