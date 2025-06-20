@@ -1,6 +1,7 @@
 import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
 import { Notification } from "../../notifications/models/notification.model";
 import { Donation } from "src/donations/models/donation.model";
+import { Product } from "../../product/entities/product.entity";
 export enum userRole {
   CREATOR = "creator",
   USER = "user",
@@ -67,7 +68,10 @@ export class User extends Model<User, IUserCreateAattr> {
 
   @HasMany(() => Notification)
   declare notifications: Notification[];
-  
+
   @HasMany(() => Donation)
   declare donation: Donation[];
+
+  @HasMany(() => Product)
+  declare product: Product[];
 }

@@ -4,4 +4,5 @@ export class CreateAdminDto {
   email: string;
   password_hash: string;
   address: string;
+  value: string;
 }

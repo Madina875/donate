@@ -1,4 +1,12 @@
-import { Column, DataType, Model, Table } from "sequelize-typescript"; //
+import {
+  BelongsToMany,
+  Column,
+  DataType,
+  Model,
+  Table,
+} from "sequelize-typescript"; //
+import { AdminRole } from "src/roles/entities/admin-role.entity";
+import { Role } from "src/roles/entities/role.entity";
 
 interface IAdminCreateAttr {
   full_name: string;
@@ -42,4 +50,7 @@ export class Admin extends Model<Admin, IAdminCreateAttr> {
     type: DataType.STRING(100),
   })
   declare address: string;
+
+  @BelongsToMany(() => Role, () => AdminRole)
+  declare role: Role[];
 }

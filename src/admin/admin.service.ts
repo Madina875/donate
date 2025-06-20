@@ -1,19 +1,32 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { Admin } from "./models/admin.model";
 import { InjectModel } from "@nestjs/sequelize";
 import { CreateAdminDto } from "./dto/create-admin.dto";
 import { UpdateAdminDto } from "./dto/update-admin.dto";
+import { RolesService } from "../roles/roles.service";
 
 @Injectable()
 export class AdminService {
-  constructor(@InjectModel(Admin) private adminModel: typeof Admin) {}
+  constructor(
+    @InjectModel(Admin) private adminModel: typeof Admin,
+    private readonly roleService: RolesService
+  ) {}
 
-  createAdmin(createAdminDto: CreateAdminDto) {
+  async createAdmin(createAdminDto: CreateAdminDto) {
+    const role = await this.roleService.findRoleBYValue(createAdminDto.value);
+    if (!role) {
+      throw new NotFoundException("Bunday role yoq");
+      // throw new HttpException("Bunday role yoq", HttpStatus.NOT_FOUND);
+    }
+    const admin = await this.adminModel.create(createAdminDto);
+    await admin.$set("role", [role.id]); //UserRole.create(userId,roleId)
+    await admin.save();
+
     return this.adminModel.create(createAdminDto);
   }
 
   async getAllAdmin(): Promise<Admin[]> {
-    return this.adminModel.findAll();
+    return this.adminModel.findAll({ include: { all: true } });
   }
 
   async getAdminById(id: number): Promise<Admin | null> {

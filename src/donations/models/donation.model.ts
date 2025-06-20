@@ -67,8 +67,8 @@ export class Donation extends Model<Donation, IDonationCreationAttr> {
   declare is_anonymous: boolean;
 
   @BelongsTo(() => User, "creatorId")
-  creator: User;
+  declare creator: User;
 
   @BelongsTo(() => User, "supporterId")
-  supporter: User;
+  declare supporter: User;
 }

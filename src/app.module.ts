@@ -15,6 +15,13 @@ import { NotificationsModule } from "./notifications/notifications.module";
 import { User } from "./user/models/user.model";
 import { Notification } from "./notifications/models/notification.model";
 import { Donation } from "./donations/models/donation.model";
+import { ProductModule } from "./product/product.module";
+import { ProductImagesModule } from "./product_images/product_images.module";
+import { Product } from "./product/entities/product.entity";
+import { ProductImages } from "./product_images/entities/product_image.entity";
+import { RolesModule } from "./roles/roles.module";
+import { Role } from "./roles/entities/role.entity";
+import { AdminRole } from "./roles/entities/admin-role.entity";
 
 @Module({
   imports: [
@@ -29,9 +36,21 @@ import { Donation } from "./donations/models/donation.model";
       username: process.env.PG_USER,
       password: process.env.PG_PASSWORD,
       database: process.env.PG_DB,
-      models: [Admin, Curyer, Categories, Social, User, Notification, Donation],
+      models: [
+        Admin,
+        Curyer,
+        Categories,
+        Social,
+        User,
+        Notification,
+        Donation,
+        Product,
+        ProductImages,
+        Role,
+        AdminRole,
+      ],
       autoLoadModels: true,
-      logging: true,
+      logging: false,
       sync: { alter: false },
     }),
     AdminModule,
@@ -41,6 +60,9 @@ import { Donation } from "./donations/models/donation.model";
     UserModule,
     DonationsModule,
     NotificationsModule,
+    ProductModule,
+    ProductImagesModule,
+    RolesModule,
   ],
 
   controllers: [],
