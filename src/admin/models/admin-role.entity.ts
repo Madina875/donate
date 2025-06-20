@@ -6,7 +6,7 @@ import {
   Table,
 } from "sequelize-typescript";
 import { Admin } from "src/admin/models/admin.model";
-import { Role } from "./role.entity";
+import { Role } from "../../roles/entities/role.entity";
 
 interface IRoleCreationAttr {
   adminId: number;

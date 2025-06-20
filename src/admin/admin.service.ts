@@ -23,11 +23,17 @@ export class AdminService {
     await admin.$set("role", [role.id]); //UserRole.create(userId,roleId)
     await admin.save();
 
-    return this.adminModel.create(createAdminDto);
+    return admin;
   }
 
   async getAllAdmin(): Promise<Admin[]> {
-    return this.adminModel.findAll({ include: { all: true } });
+    return this.adminModel.findAll({
+      include: {
+        model: Role,
+        attributes: ["id", "value"],
+        through: { attributes: [] },
+      },
+    });
   }
 
   async getAdminById(id: number): Promise<Admin | null> {

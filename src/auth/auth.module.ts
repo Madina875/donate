@@ -4,6 +4,7 @@ import { AuthController } from "./auth.controller";
 import { AdminModule } from "../admin/admin.module";
 import { JwtModule } from "@nestjs/jwt";
 import { AdminService } from "../admin/admin.service";
+console.log(process.env.SECRET_KEY);
 
 @Module({
   imports: [

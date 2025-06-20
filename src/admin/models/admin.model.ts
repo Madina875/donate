@@ -5,7 +5,7 @@ import {
   Model,
   Table,
 } from "sequelize-typescript"; //
-import { AdminRole } from "src/roles/entities/admin-role.entity";
+import { AdminRole } from "src/admin/models/admin-role.entity";
 import { Role } from "src/roles/entities/role.entity";
 
 interface IAdminCreateAttr {

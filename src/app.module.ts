@@ -21,8 +21,8 @@ import { Product } from "./product/entities/product.entity";
 import { ProductImages } from "./product_images/entities/product_image.entity";
 import { RolesModule } from "./roles/roles.module";
 import { Role } from "./roles/entities/role.entity";
-import { AdminRole } from "./roles/entities/admin-role.entity";
-import { AuthModule } from './auth/auth.module';
+import { AdminRole } from "./admin/models/admin-role.entity";
+import { AuthModule } from "./auth/auth.module";
 
 @Module({
   imports: [

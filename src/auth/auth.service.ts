@@ -3,11 +3,8 @@ import {
   Injectable,
   UnauthorizedException,
 } from "@nestjs/common";
-import { InjectModel } from "@nestjs/sequelize";
 import * as bcrypt from "bcrypt";
-import { UserService } from "../user/user.service";
 import { JwtService } from "@nestjs/jwt";
-import { CreateUserDto } from "../user/dto/create-user.dto";
 import { AdminService } from "../admin/admin.service";
 import { CreateAdminDto } from "../admin/dto/create-admin.dto";
 import { Admin } from "../admin/models/admin.model";
