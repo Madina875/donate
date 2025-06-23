@@ -6,9 +6,10 @@ import { ProductImages } from "./entities/product_image.entity";
 import { ProductModule } from "../product/product.module";
 import { Product } from "../product/entities/product.entity";
 import { ProductService } from "../product/product.service";
+import { FilesModule } from "../files/files.module";
 
 @Module({
-  imports: [SequelizeModule.forFeature([ProductImages, Product])],
+  imports: [SequelizeModule.forFeature([ProductImages, Product]), FilesModule],
   controllers: [ProductImagesController],
   providers: [ProductImagesService, ProductService],
   exports: [ProductImagesService],

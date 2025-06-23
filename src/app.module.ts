@@ -23,12 +23,18 @@ import { RolesModule } from "./roles/roles.module";
 import { Role } from "./roles/entities/role.entity";
 import { AdminRole } from "./admin/models/admin-role.entity";
 import { AuthModule } from "./auth/auth.module";
+import { FilesModule } from "./files/files.module";
+import { ServeStaticModule } from "@nestjs/serve-static";
+import { join } from "path";
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: ".env",
       isGlobal: true,
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, "..", "static"), //static pictures
     }),
     SequelizeModule.forRoot({
       dialect: "postgres",
@@ -65,6 +71,7 @@ import { AuthModule } from "./auth/auth.module";
     ProductImagesModule,
     RolesModule,
     AuthModule,
+    FilesModule,
   ],
 
   controllers: [],
