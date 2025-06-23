@@ -10,6 +10,7 @@ import {
 import { User } from "../../user/models/user.model";
 import { Categories } from "../../categories/models/categories.model";
 import { ProductImages } from "../../product_images/entities/product_image.entity";
+import { ApiProperty } from "@nestjs/swagger";
 // import { ProductImage } from "../../product_images/entities/product_image.entity";
 
 interface IProductCreationattr {
@@ -24,6 +25,10 @@ interface IProductCreationattr {
 
 @Table({ tableName: "product" })
 export class Product extends Model<Product, IProductCreationattr> {
+  @ApiProperty({
+    example: 1,
+    description: "product name",
+  })
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,
@@ -42,22 +47,38 @@ export class Product extends Model<Product, IProductCreationattr> {
   })
   declare name: string;
 
+  @ApiProperty({
+    example: "this is description of the product",
+    description: "product's description",
+  })
   @Column({
     type: DataType.STRING,
   })
   declare description: string;
 
+  @ApiProperty({
+    example: 1,
+    description: "product's in stock",
+  })
   @Column({
     type: DataType.INTEGER,
   })
   declare in_stock: number;
 
+  @ApiProperty({
+    example: true,
+    description: "product's availablitiy",
+  })
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: true,
   })
   declare is_available: boolean;
 
+  @ApiProperty({
+    example: 12.0,
+    description: "product's price",
+  })
   @Column({
     type: DataType.DECIMAL(10, 2),
   })

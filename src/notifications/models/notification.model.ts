@@ -7,6 +7,7 @@ import {
   Table,
 } from "sequelize-typescript";
 import { User } from "../../user/models/user.model";
+import { ApiProperty } from "@nestjs/swagger";
 
 interface INotificationCreationAttr {
   userId: number;
@@ -18,6 +19,10 @@ export class Notification extends Model<
   Notification,
   INotificationCreationAttr
 > {
+  @ApiProperty({
+    example: 1,
+    description: "notification id",
+  })
   @Column({
     type: DataType.INTEGER,
     primaryKey: true,
@@ -32,6 +37,10 @@ export class Notification extends Model<
   @BelongsTo(() => User)
   declare user: User;
 
+  @ApiProperty({
+    example: "gfds",
+    description: "notification message",
+  })
   @Column({
     type: DataType.STRING,
   })

@@ -1,3 +1,4 @@
+import { ApiProperty } from "@nestjs/swagger";
 import {
   BelongsToMany,
   Column,
@@ -19,6 +20,10 @@ interface IAdminCreateAttr {
 
 @Table({ tableName: "admin", timestamps: true }) //
 export class Admin extends Model<Admin, IAdminCreateAttr> {
+  @ApiProperty({
+    example: 1,
+    description: "admin name",
+  })
   @Column({
     type: DataType.INTEGER,
     autoIncrement: true,
@@ -26,32 +31,56 @@ export class Admin extends Model<Admin, IAdminCreateAttr> {
   })
   declare id: number;
 
+  @ApiProperty({
+    example: "user",
+    description: "admin name",
+  })
   @Column({
     type: DataType.STRING(100),
     allowNull: false,
   })
   declare full_name: string;
 
+  @ApiProperty({
+    example: "1234567",
+    description: "admin raqami",
+  })
   @Column({
     type: DataType.STRING(15),
   })
   declare phone_number: string;
 
+  @ApiProperty({
+    example: "user@gmail.com",
+    description: "admin emaili",
+  })
   @Column({
     type: DataType.STRING(100),
   })
   declare email: string;
 
+  @ApiProperty({
+    example: "123456jhgfd",
+    description: "admin paroli",
+  })
   @Column({
     type: DataType.STRING(100),
   })
   declare password_hash: string;
 
+  @ApiProperty({
+    example: "johnsons street",
+    description: "admin adresi",
+  })
   @Column({
     type: DataType.STRING(100),
   })
   declare address: string;
 
+  @ApiProperty({
+    example: true,
+    description: "admin holati ",
+  })
   @Column({
     type: DataType.BOOLEAN,
   })

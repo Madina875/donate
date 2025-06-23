@@ -8,6 +8,7 @@ import {
 } from "sequelize-typescript";
 
 import { User } from "../../user/models/user.model";
+import { ApiProperty } from "@nestjs/swagger";
 
 export enum PaymentMethod {
   CARD = "card",
@@ -25,6 +26,10 @@ interface IDonationCreationAttr {
 
 @Table({ tableName: "donation" })
 export class Donation extends Model<Donation, IDonationCreationAttr> {
+  @ApiProperty({
+    example: 1,
+    description: "donation name",
+  })
   @Column({
     type: DataType.BIGINT,
     primaryKey: true,
@@ -44,22 +49,38 @@ export class Donation extends Model<Donation, IDonationCreationAttr> {
   })
   declare supporterId: number;
 
+  @ApiProperty({
+    example: 1200.0,
+    description: "donation money amount",
+  })
   @Column({
     type: DataType.DECIMAL(10, 2),
     allowNull: false,
   })
   declare amount: number;
 
+  @ApiProperty({
+    example: "sdfghjk",
+    description: "curyer message",
+  })
   @Column({
     type: DataType.STRING,
   })
   declare message: string;
 
+  @ApiProperty({
+    example: "cash",
+    description: "payment method",
+  })
   @Column({
     type: DataType.ENUM(...Object.values(PaymentMethod)),
   })
   declare payment_method: PaymentMethod;
 
+  @ApiProperty({
+    example: true,
+    description: "is  anonymous",
+  })
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: false,
